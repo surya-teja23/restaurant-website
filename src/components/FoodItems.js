@@ -15,7 +15,7 @@ export default function MainContent() {
       setIsLoading(true)
       setError('')
       await logout()
-      // navigate('/homepage')
+      navigate('/login')
     } catch(error) {
       setError(error.message)
     } finally {
@@ -50,7 +50,7 @@ export default function MainContent() {
       <div></div> */}
       <h1>Bhanu</h1>
       <p>{error}</p>
-      <button disabled={isLoading} onClick={handleLogOut}>Logout</button>
+      <button className='btn btn-danger' disabled={isLoading} onClick={handleLogOut}>Logout</button>
     </>
   )
 }
