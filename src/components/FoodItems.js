@@ -1,9 +1,10 @@
 import React , { useState} from 'react'
 import { useValues } from '../Context/ContextProvider'
 import { useAuth } from '../Context/AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 export default function MainContent() {
-
+  const navigate = useNavigate()
   const { windowInnerWidth } = useValues()
   const { logout } = useAuth()
   const [isLoading , setIsLoading] = useState(false)
