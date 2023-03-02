@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../Context/AuthProvider'
 import { useNavigate } from 'react-router-dom'
 import { updateProfile } from 'firebase/auth'
-import Alert from 'react-bootstrap/Alert'
 
 export default function SignUp() {
   const { setCurrentDisplayName , createAccount , googleSignIn } = useAuth()

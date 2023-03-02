@@ -1,10 +1,27 @@
 import React from 'react'
 import { useValues } from '../Context/ContextProvider'
+import { useAuth } from '../Context/AuthProvider'
 
 export default function MainContent() {
 
   const { windowInnerWidth } = useValues()
+  const { logout } = useAuth()
+  const [isLoading , setIsLoading] = useState(false)
+  const [error , setError] = useState('')
 
+
+  async function handleLogOut() {
+    try {
+      setIsLoading(true)
+      setError('')
+      await logout()
+      // navigate('/homepage')
+    } catch(error) {
+      setError(error.message)
+    } finally {
+      setIsLoading(false)
+    }
+  }
   return (
     // <div className='container-fluid' style={{minHeight: '100vh'}}>
     //   <div className='row'>
@@ -22,7 +39,7 @@ export default function MainContent() {
     //   </div>
     // </div>
     <>
-      <div className='position-fixed bottom-0 start-0 end-0 d-flex justify-content-between'>
+      {/* <div className='position-fixed bottom-0 start-0 end-0 d-flex justify-content-between'>
         <a>Biryani</a>
         <a>Biryani</a>
         <a>Biryani</a>
@@ -30,7 +47,10 @@ export default function MainContent() {
         <a>Biryani</a>
         <a>Biryani</a>
       </div>
-      <div></div>
+      <div></div> */}
+      <h1>Bhanu</h1>
+      <p>{error}</p>
+      <button disabled={isLoading} onClick={handleLogOut}>Logout</button>
     </>
   )
 }
